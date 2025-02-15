@@ -48,8 +48,15 @@ function nextDiv() {
 // In this form the players will add their names and select the categories : 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    firstPlayerName = firstPlayer.value;
-    secondPlayerName = secondPlayer.value;
+    firstPlayerName = firstPlayer.value.trim();
+    secondPlayerName = secondPlayer.value.trim();
+
+    // Here I am checking that if the player enters the white-space instead of entering the name or it's empty then the user will see a msg and the user will have to enter the players name : 
+    if (firstPlayerName === '' || secondPlayerName === '') {
+        notes.innerHTML = 'Player names cannot be empty or just white-space';
+        notes.style.color = 'red';
+        return;
+    }
 
     let category = categories.value;
     console.log(category);
