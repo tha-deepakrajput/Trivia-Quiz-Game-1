@@ -11,7 +11,7 @@ const gameContainer = document.getElementById('gameContainer');
 const playerNames = document.getElementById('playerNames');
 
 // Here we will store the played categories : 
-let playerCategories = [];
+let playedCategories = [];
 
 // Here we will store the names like category name, player's name : 
 let categoryName;
@@ -59,7 +59,7 @@ form.addEventListener('submit', (e) => {
     }
 
     let category = categories.value;
-    console.log(category);
+    // console.log(category);
     categoryName = document.querySelector(`[value=${category}]`).innerHTML;
     console.log(categoryName);
 
@@ -71,10 +71,10 @@ function chooseCategory(category) {
     if (category === 'choose') {
         notes.innerHTML = 'Please select the Category';
     }
-    else if (!playerCategories.includes(category)) {
+    else if (!playedCategories.includes(category)) {
         notes.innerHTML = '';
         firstPage.style.display = 'none';
-        playerCategories.push(category);
+        playedCategories.push(category);
         fetchQuestions(category);
     }
     else {
@@ -275,7 +275,7 @@ function displayNextQuestion(question) {
     }
     else {
         // This will take you on another page where you will get two buttons to continue the game or quit the game if all the categories have not played : 
-        if (playerCategories.length < 10) {
+        if (playedCategories.length < 10) {
             gameContainer.innerHTML = `
             <h1> Trivia Quiz Game </h1>
             <div id="gameBtn">
