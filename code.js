@@ -124,8 +124,8 @@ function displayQuestions(storeQuestions) {
     console.log(`Incorrect Answers are : ${incorrectOptions}`);
     incorrectOptions.push(correctOption);
 
-    // calling the suffleOptions function and assigning it in a variable : 
-    let allOptions = suffleOptions(incorrectOptions);
+    // calling the shuffleOptions function and assigning it in a variable : 
+    let allOptions = shuffleOptions(incorrectOptions);
 
     let currentQuestion = question.question.text;
     console.log(currentQuestion);
@@ -193,8 +193,8 @@ function questionWithOptions(currentQuestion, allOptions, correctOption) {
 
 let options = ['first', 'second', 'third', 'fourth'];
 
-// This function will suffle all the correct and incorrect options : 
-function suffleOptions(options) {
+// This function will shuffle all the correct and incorrect options : 
+function shuffleOptions(options) {
     for (i = 0; i < options.length; i++) {
         let index = Math.floor(Math.random() * (i + 1));
         let temp = options[i];
