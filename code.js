@@ -195,7 +195,7 @@ let options = ['first', 'second', 'third', 'fourth'];
 
 // This function will shuffle all the correct and incorrect options : 
 function shuffleOptions(options) {
-    for (i = 0; i < options.length; i++) {
+    for (let i = 0; i < options.length; i++) {
         let index = Math.floor(Math.random() * (i + 1));
         let temp = options[i];
         options[i] = options[index];
