@@ -35,7 +35,7 @@ let secondPlayerScoreContainer = document.createElement('h3');
 let msg = document.createElement('p');
 
 // This will take you to the next page : 
-startBtn.addEventListener('clickc', () => {
+startBtn.addEventListener('click', () => {
     welcomePage;
 });
 
