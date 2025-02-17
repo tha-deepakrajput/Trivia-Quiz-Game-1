@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="notes"></div>
     <div class="mainContainer">
         <div id="welcomePage">
             <h1>Welcome</h1>
@@ -15,12 +16,14 @@
             <button type="button" onclick="nextDiv()" id="startBtn">Start</button>
         </div>
 
+        <div id="loadingMessage" class="hidden">Please wait, Loading the Questions...</div>
+
         <div id="firstPage" class="hidden">
             <h1 class="triviaH1">Trivia Quiz Game</h1>
             <form id="form">
                 <div id="playerNames">
-                    <input type="text" id="firstPlayer" placeholder="Enter the first player name" required>
-                    <input type="text" id="secondPlayer" placeholder="Enter the second Player name" required>
+                    <input type="text" id="firstPlayer" placeholder="Enter the first player name" >
+                    <input type="text" id="secondPlayer" placeholder="Enter the second Player name" >
                 </div>
                 <select id="categories">
                     <option value="choose">Select the Category</option>
@@ -36,7 +39,6 @@
                     <option value="general_knowledge">General Knowledge</option>
                 </select>
 
-                <div id="notes"></div>
                 <button type="submit">Play</button>
             </form>
         </div>

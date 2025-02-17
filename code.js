@@ -9,6 +9,7 @@ const categories = document.getElementById('categories');
 const notes = document.getElementById('notes');
 const gameContainer = document.getElementById('gameContainer');
 const playerNames = document.getElementById('playerNames');
+const loadingMessage = document.getElementById('loadingMessage');
 
 // Here we will store the played categories : 
 let playedCategories = [];
@@ -75,10 +76,12 @@ function chooseCategory(category) {
         notes.innerHTML = '';
         firstPage.style.display = 'none';
         playedCategories.push(category);
+        loadingMessage.classList.remove('hidden');
         fetchQuestions(category);
     }
     else {
-        notes.innerHTML = 'please select another category';
+        notes.innerHTML = 'Please select another category';
+        loadingMessage.classList.add('hidden');
     }
 }
 
@@ -88,6 +91,10 @@ let difficultyLevels = ['easy', 'medium', 'hard'];
 // This function will fetch the questions : 
 async function fetchQuestions(category) {
     try {
+        loadingMessage.classList.remove('hidden');
+        gameContainer.innerHTML = '';
+        gameContainer.style.display = 'flex';
+
         storeQuestions = [];
         let arrLength = difficultyLevels.length;
 
@@ -96,12 +103,15 @@ async function fetchQuestions(category) {
             let data = await response.json();
             storeQuestions.push(...data);
         }
+
+        loadingMessage.classList.add('hidden');
         // console.log(`Questions : ${storeQuestions}`);
         displayQuestions(storeQuestions);
     }
     catch (error) {
         console.error(`Error in fetching questions : ${error}`);
 
+        loadingMessage.classList.add('hidden');
         firstPage.style.display = 'none';
         gameContainer.style.display = 'flex';
         gameContainer.style.color = 'red';
@@ -178,8 +188,8 @@ function questionWithOptions(currentQuestion, allOptions, correctOption) {
     infoDiv.appendChild(level);
     infoDiv.appendChild(scoreDiv);
 
+    notes.appendChild(msg);
     gameContainer.appendChild(infoDiv);
-    gameContainer.appendChild(msg);
     gameContainer.appendChild(scoreDiv);
 
     let li = document.querySelectorAll('li');
@@ -248,22 +258,11 @@ function updateTheScore(clickedOpt, correctAnswer, currentDifficulty) {
         e.style.pointerEvents = 'none';
     });
 
-    // After this I will provide you another button for the next question : 
-    const nextQuestionBtnDiv = document.createElement('div');
-    const nextQuestionBtn = document.createElement('button');
-    nextQuestionBtn.textContent = 'Next Question';
-    nextQuestionBtn.id = 'nextQuestionBtn';
-    nextQuestionBtnDiv.appendChild(nextQuestionBtn);
-    gameContainer.appendChild(nextQuestionBtnDiv);
-
-    if (currentQuestionIndex === 5) {
-        nextQuestionBtn.textContent = 'Go to next page';
-    }
-
-    nextQuestionBtn.addEventListener('click', () => {
+    // Here I am using set time out function to automatically display the next question : 
+    setTimeout(() => {
         msg.innerHTML = '';
         displayNextQuestion(storeQuestions);
-    });
+    }, 2000);
 }
 
 // This function will help us to get the next question : 
