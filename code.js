@@ -37,7 +37,7 @@ let msg = document.createElement('p');
 
 // This will take you to the next page : 
 startBtn.addEventListener('click', () => {
-    welcomePage;
+    nextDiv();
 });
 
 // This function will display the first page and hide the welcome page : 
@@ -48,6 +48,7 @@ function nextDiv() {
 
 // In this form the players will add their names and select the categories : 
 form.addEventListener('submit', (e) => {
+    // Here we are calling prevent default to prevent the behaviour of form submission.
     e.preventDefault();
     firstPlayerName = firstPlayer.value.trim();
     secondPlayerName = secondPlayer.value.trim();
