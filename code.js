@@ -138,7 +138,7 @@ function displayQuestions(storeQuestions) {
     let allOptions = shuffleOptions(incorrectOptions);
 
     let currentQuestion = question.question.text;
-    console.log(currentQuestion);
+    console.log(`Question : ${currentQuestion}`);
 
     if (currentQuestionIndex % 2 === 0) {
         currentPlayerName = firstPlayerName;
