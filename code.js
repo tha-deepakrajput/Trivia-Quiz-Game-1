@@ -262,7 +262,7 @@ function updateTheScore(clickedOpt, correctAnswer, currentDifficulty) {
     // Here I am using set time out function to automatically display the next question : 
     setTimeout(() => {
         msg.innerHTML = '';
-        displayNextQuestion(storeQuestions);
+       displayNextQuestion (storeQuestions);
     }, 2000);
 }
 
